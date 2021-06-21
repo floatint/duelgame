@@ -4,7 +4,7 @@ package ru.vrn.vita.duelgame.config;
 import java.util.List;
 
 /**
- *  общий интерфейс кофигурации для различных форматов.
+ *  Общий интерфейс кофигурации для различных форматов.
  * */
 public interface GameConfig {
     /**

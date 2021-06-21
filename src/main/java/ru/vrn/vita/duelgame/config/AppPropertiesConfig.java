@@ -1,13 +1,9 @@
 package ru.vrn.vita.duelgame.config;
 
-import ru.vrn.vita.duelgame.game.*;
-
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *  Класс конфигурации из *.properties файлов.

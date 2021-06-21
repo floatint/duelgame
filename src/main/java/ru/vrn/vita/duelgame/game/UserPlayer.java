@@ -6,8 +6,6 @@ import ru.vrn.vita.duelgame.io.OutputProvider;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class UserPlayer extends BasePlayer {
 

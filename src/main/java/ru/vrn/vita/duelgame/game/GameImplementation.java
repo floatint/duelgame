@@ -10,8 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GameImplementation implements Game {
 
@@ -52,9 +50,7 @@ public class GameImplementation implements Game {
         secondPlayer = players.get(secondPlayerNum);
     }
 
-
-    @Override
-    public void nextRound() {
+    private void nextRound() {
         try {
             // Очистка буффера вывода. В винде не работает.
             outputProvider.clear();

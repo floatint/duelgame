@@ -1,6 +1,5 @@
 package ru.vrn.vita.duelgame.cli;
 
-import ru.vrn.vita.duelgame.game.Player;
 import ru.vrn.vita.duelgame.io.OutputProvider;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
