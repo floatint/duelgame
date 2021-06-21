@@ -22,7 +22,7 @@ public class GameImplementation implements Game {
     public GameImplementation(GameConfig config, InputProvider<Integer> playerInputProvider, OutputProvider<String> playerOutputProvider, OutputProvider<String> gameOutputProvider){
         // одному играть не интересно
         if (config.getPlayers().size() < 2) {
-            throw new RuntimeException("Слишком мало игроков");
+            throw new RuntimeException("Too few players");
         }
 
         // сохраняем IO провайдеры
@@ -41,10 +41,10 @@ public class GameImplementation implements Game {
 
         // рандомно определяем кто ходит первый
         Random rnd = new Random();
-        int fisrtPlayerNum = rnd.nextInt(players.size());
-        firstPlayer = players.get(fisrtPlayerNum);
+        int firstPlayerNum = rnd.nextInt(players.size());
+        firstPlayer = players.get(firstPlayerNum);
         int secondPlayerNum = rnd.nextInt(players.size());
-        while(fisrtPlayerNum == secondPlayerNum){
+        while(firstPlayerNum == secondPlayerNum){
             secondPlayerNum = rnd.nextInt(players.size());
         }
         secondPlayer = players.get(secondPlayerNum);
