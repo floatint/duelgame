@@ -1,9 +1,6 @@
 package ru.vrn.vita.duelgame.game;
 
-import java.util.HashSet;
-import java.util.InputMismatchException;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 /**
  *  Абстрактный класс игрока.
@@ -30,14 +27,14 @@ public abstract class BasePlayer implements Player {
 
     @Override
     public void storeOpponentCard(Integer card) {
-        oppenentCards.add(card);
+        opponentCards.add(card);
     }
 
     /**
      *  Получить список карт противника, которые он уже выложил
      * */
     protected Set<Integer> getOpponentCards(){
-        return oppenentCards;
+        return opponentCards;
     }
 
     @Override
@@ -71,8 +68,8 @@ public abstract class BasePlayer implements Player {
     }
 
     private String name;
-    private Set<Integer> availableCards = new HashSet<>();
-    private Set<Integer> oppenentCards = new HashSet<>();
+    private Set<Integer> availableCards = new TreeSet<>();
+    private Set<Integer> opponentCards = new TreeSet<>();
     private Integer selectedCard;
     private int score;
 }

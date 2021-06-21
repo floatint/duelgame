@@ -1,8 +1,7 @@
 package ru.vrn.vita.duelgame.game;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  *  Класс игрока-компьютера
@@ -17,33 +16,16 @@ public class AIPlayer extends BasePlayer {
      *  Алгоритм работы AI следующий:
      *  1) Получаем список карт, которые противник уже выложил.
      *  2) Получаем список карт, которые доступны AI в текущем раунде.
-     *
-     *  Поскольку мы знаем максимальное кол-во карт, то проверяем
-     *  на сколько "старшие" карты выложил противник.
-     *  Если противник в самом начале выкладывает "старшие" карты,
-     *  то можно их пропустить, отдавая
+     *  3) Вычисляем среднее значение карты на основе уже использованных противником карт.
+     *     Если таковых нет, то берется одна из доступных для AI карт.
+     *  4) Выбираем карту, которая > среднего значения, либо если такой нет, то самую первую.
      * */
     @Override
     public void handleRound() {
-
-        Set<Integer> oppenentCards = getOpponentCards();
-        Set<Integer> availableCards = getAvailableCards();
-
-        // Выдаем карты по порядку
-        if (getAvailableCards().iterator().hasNext()){
-            setSelectedCard(getAvailableCards().iterator().next());
-        }
-
-/*        // просто выберем рандомную карту
         Random rnd = new Random();
-        Integer card = rnd.nextInt(getAvailableCards().size());
-        while (alreadyUsedCards.contains(card)){
-            card = rnd.nextInt(getAvailableCards().size());
-        }
-        setSelectedCard(card);
-        alreadyUsedCards.add(card);*/
-
+        List<Integer> opponentCards = new ArrayList<>(getOpponentCards());
+        List<Integer> availableCards = new ArrayList<>(getAvailableCards());
+        double avgCard = opponentCards.stream().mapToInt(x -> x).average().orElse(rnd.nextInt(availableCards.size()));
+        setSelectedCard(availableCards.stream().filter(x -> x > (int)avgCard).findFirst().orElse(availableCards.get(0)));
     }
-
-    private Set<Integer> alreadyUsedCards = new HashSet<>();
 }
